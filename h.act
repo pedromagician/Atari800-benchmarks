@@ -1,0 +1,73 @@
+DEFINE ASCII_SpaceBar="32"
+BYTE RTCLOK19=19, RTCLOK20=20
+BYTE LN, count, I
+CHAR ARRAY A(200),B(200),tmp(200)
+CARD X
+
+PROC BSTR()
+  RTCLOK20=0
+  RTCLOK19=0
+  RTCLOK20=0
+
+  FOR X=0 TO 500
+  DO
+    SCopy(A, "  STRING1 STRING2   ")
+    SCopy(B, A)
+    
+    LN=A(0)
+    WHILE LN>0 DO
+      IF A(LN)=ASCII_SpaceBar THEN
+        A(0)==-1
+      ELSE
+        EXIT
+      FI
+      LN=A(0)
+    OD
+
+    count=0
+    DO
+      IF (count+1)>A(0) THEN EXIT FI
+      IF A(count+1)#ASCII_SpaceBar THEN EXIT FI
+      count==+1
+    OD
+    SCopyS(tmp, A, count+1, A(0))
+    SCopy(A, tmp)
+    
+    SCopy(A, "123456789")
+    SCopyS(B, A, 5, A(0))
+    SCopyS(B, A, 3, 6)
+
+    SCopy(B, "ASDF")
+    B(0)==-1
+    SAssign(A, B, 2, 4)
+    B(0)==+1
+
+    SCopy(tmp, A)
+    SCopyS(A, tmp, 2, 5)
+
+    SCopyS(B, A, 1, A(0))
+
+    StrB(200,A)
+    I=VAlB(A)
+
+    SCopy(B, "A")
+    I=B(1);
+
+    A(0)=1
+    A(1)=I
+
+    SCopy(A, "STRING1")
+    SCopy(B, "STRING2")
+
+    A(0)=3
+    B(0)=3
+    
+    IF SCompare(A,B)=0 THEN SCopy(A, "ZXC") FI
+    IF SCompare(A,B)=0 THEN SCopy(A, "ZXC") FI
+
+    IF SCompare(A,B)#0 THEN SCopy(A, B) FI
+    IF SCompare(A,B)#0 THEN SCopy(A, B) FI
+  OD
+
+  PRINTF("Time: %U-%U jiffies",RTCLOK19, RTCLOK20)
+RETURN

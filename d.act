@@ -1,0 +1,18 @@
+PROC B4()
+  BYTE RTCLOK19=19, RTCLOK20=20
+  CARD A, B, X, C
+  RTCLOK20=0
+  RTCLOK19=0
+  RTCLOK20=0
+  FOR A=1 TO 15
+  DO
+    X=0 C=0
+    FOR B=1 TO 200
+    DO
+      C=B+2*B
+      X=X+B*2
+      C=(C-B)/2
+    OD
+  OD
+  PRINTF("Time: %U-%U jiffies", RTCLOK19, RTCLOK20)
+RETURN

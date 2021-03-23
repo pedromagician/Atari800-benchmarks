@@ -1,0 +1,35 @@
+BYTE RTCLOK19=19, RTCLOK20=20,
+     SDMCTL=559
+
+BYTE ARRAY FLAGS(8190)
+
+CARD COUNT,I,K,PRIME
+
+PROC SIEVE()
+  SDMCTL=0
+  RTCLOK20=0
+  RTCLOK19=0
+  RTCLOK20=0
+  COUNT=0
+  FOR I=0 TO 8190
+    DO
+    FLAGS(I)='T
+    OD
+
+  FOR I=0 TO 8190
+    DO
+    IF FLAGS(I)='T THEN
+      PRIME=I+I+3
+      K=I+PRIME
+      WHILE K<=8190
+        DO
+        FLAGS(K)='F
+        K==+PRIME
+        OD
+      COUNT==+1
+    FI
+    OD
+
+  PRINTF("Time: %U-%U jiffies",RTCLOK19, RTCLOK20)
+  SDMCTL=34
+RETURN
