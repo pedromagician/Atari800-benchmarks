@@ -1,4 +1,6 @@
-# Atari800-benchmarks
+# Atari800 Benchmarks
+
+![bench](https://raw.githubusercontent.com/pedromagician/Atari800-benchmarks/main/pic/screenshot.png)
 
 #### _TEST A:_
 Atari Basic: 584 = 11.68s\
